@@ -1,7 +1,7 @@
-import React from 'react'
 import { Box } from "@mui/material"
 import Search from '../components/home/Search'
 import MenuList from   '../components/home/MenuList'
+import Countries from '../components/home/Countries'
 const Home = () => {
   return (
     <Box mt={{ xs: 3, sm: 5 , overflowX : "hidden" }} >
@@ -21,6 +21,9 @@ const Home = () => {
       </Box>
 
 
+      <Box mt = {{xs : 3 , sm : 5 }} >
+        <Countries />
+      </Box>
 
     </Box>
   )

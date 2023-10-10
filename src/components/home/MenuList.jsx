@@ -68,7 +68,7 @@ const MenuList = () => {
         }}
         sx={{
           ".MuiPaper-root": {
-            background: "transparent",
+            backgroundColor: theme.palette.mode === "light" ? "white" : "hsl(209, 23%, 15%)",
           }
         }}
       >

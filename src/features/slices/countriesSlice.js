@@ -22,6 +22,14 @@ export const fetchCountryByRegion = createAsyncThunk(
         return response.data;
     }
 );
+export const fetchAllCountries = createAsyncThunk(
+    'countries/fetchAllCountries',
+    async () => {
+        const url = `all`;
+        const response = await countriesApi.get(url);
+        return response.data;
+    }
+);
 
 
 
@@ -45,6 +53,7 @@ const countriesSlice = createSlice({
     extraReducers: {
         [fetchCountryByName.rejected]: (state, { payload }) => {
             state.error = payload.error
+            state.loading = false
         },
         [fetchCountryByName.pending]: (state,) => {
             state.loading = true
@@ -53,6 +62,10 @@ const countriesSlice = createSlice({
         [fetchCountryByRegion.pending]: (state,) => {
             state.loading = true
 
+        },
+        [fetchAllCountries.pending]: (state,) => {
+            state.loading = true
+      
         },
 
 
@@ -64,6 +77,11 @@ const countriesSlice = createSlice({
             state.countries = payload
             state.loading = false
         },
+        [fetchAllCountries.fulfilled]: (state, { payload }) => {
+            state.countries = payload
+            state.loading = false
+        },
+     
     }
 })
 
