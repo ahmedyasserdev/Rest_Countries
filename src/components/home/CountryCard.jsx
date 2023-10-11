@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
 import { Box, Card, CardContent, CardMedia, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -7,7 +6,7 @@ const CountryCard = ({ country }) => {
     const theme = useTheme()
     return (
         <Box sx={{ width: 220 }}>
-            <Link style={{ textDecoration: "none" }} to={`/country/${country.name.common}`}>
+            <Link style={{ textDecoration: "none" }} to={`/country/${country.cca2}`}>
                 <Card
                     sx={{
                         backgroundColor: theme.palette.mode === 'light' ? 'white' : "hsl(209, 23%, 22%)",
@@ -16,6 +15,7 @@ const CountryCard = ({ country }) => {
                             transform: "scale(1.1)",
                         }
                     }}
+                    elevation = {3}
                 >
                     <CardMedia
                         component="img"

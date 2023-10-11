@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { Box, TextField, useTheme } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from "react-redux"
@@ -25,6 +25,8 @@ const Search = () => {
             });
         }
     };
+
+  
 
     return (
         <Box >

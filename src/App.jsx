@@ -3,6 +3,7 @@ import { ColorModeContext, useMode } from "./theme";
 import Header from "./components/Header.jsx";
 import {Routes , Route} from "react-router-dom"
 import Home from "./pages/Home";
+import CountryDetails from "./pages/CountryDetails";
 const App = () => {
   const [theme, colorMode] = useMode();
 
@@ -26,6 +27,7 @@ const App = () => {
 
           <Routes>
           <Route index element = {<Home />} />
+          <Route  path = "/country/:cca2" element = {<CountryDetails />} />
           
           </Routes>
 

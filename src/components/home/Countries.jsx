@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Pagination, useTheme } from "@mui/material";
+import { Box, Pagination, useTheme, Typography } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux';
-import { getCountries, fetchAllCountries } from '../../features/slices/countriesSlice';
+import { getCountries, fetchAllCountries, getLoading, getError } from '../../features/slices/countriesSlice';
 import CountryCard from './CountryCard';
+import Loader from '../Loader';
+import Error from '../Error';
+
 
 const Countries = () => {
     const countries = useSelector(getCountries);
     const dispatch = useDispatch();
+    const isLoading = useSelector(getLoading)
+    const isError = useSelector(getError)
     const [page, setPage] = useState(1);
     const itemsPerPage = 32;
-    const theme = useTheme()
     useEffect(() => {
         dispatch(fetchAllCountries());
     }, []);
@@ -17,6 +21,21 @@ const Countries = () => {
     const handleChange = (event, value) => {
         setPage(value);
     };
+
+
+    if (isLoading) {
+        return (
+            <Loader />
+
+        )
+    }
+
+    if (isError) {
+        return (
+            <Error />
+        );
+    }
+
 
     return (
         <Box
@@ -34,7 +53,7 @@ const Countries = () => {
                     justifyContent: { xs: "center", sm: "space-between" },
                     alignItems: "center",
                     flexWrap: "wrap",
-                    gap: { xs: "10px", sm: "30px" }
+                    gap: { xs: "20px", sm: "30px" }
                 }}
             >
                 {
